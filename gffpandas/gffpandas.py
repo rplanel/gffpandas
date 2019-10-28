@@ -150,7 +150,7 @@ class Gff3DataFrame(object):
         attribute_df = self.df.copy()
         df_attributes = attribute_df.loc[:, 'seq_id':'attributes']
         attribute_df['at_dic'] = attribute_df.attributes.apply(
-            lambda attributes: dict([key_value_pair.split('=') for
+            lambda attributes: dict([key_value_pair.split('=', 1) for
                                      key_value_pair in attributes.split(';')]))
         attribute_df['at_dic_keys'] = attribute_df['at_dic'].apply(
             lambda at_dic: list(at_dic.keys()))
